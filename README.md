@@ -14,6 +14,7 @@ to Run Shopping on localhost: <br><br>
 	 <li>	 $ npm install --no-bin-links</li>
 	 <li>	 $ php artisan migrate</li>
 	 <li>	 $ php artisan db:seed</li>
+     <li>	 $ php artisan key:generate</li>
 	 <li>	 $ php artisan serve</li>
 </ul>
 <ul>8- Now you can go to your browser and open project link (Project like such as http://localhost:8000).</ul>
