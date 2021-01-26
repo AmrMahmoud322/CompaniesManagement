@@ -4,8 +4,8 @@ to Run Shopping on localhost: <br><br>
 <ul>2- open termenal from project folder.</ul>
 <ul>3- Check whether everything has been installed correctly (git , node , npm and composer).</ul>
 <ul>4- Run Mysql on your PC.</ul>
-<ul>5- Create a database called "shopping-cart".</ul>
-<ul>6- Change the .env file settings to fit your database settings (such as DB_PORT).</ul>
+<ul>5- Create a database called "CompaniesManagement".</ul>
+<ul>6- Change the .env file settings to fit your database settings.</ul>
 <ul>
 	7- Run commands:<br>
 	 <li>	 $ composer install</li>
