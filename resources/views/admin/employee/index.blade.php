@@ -83,6 +83,8 @@
                   </table>
             </div>
             <!-- /.container-fluid -->
+
+            {{-- laravel pagination --}}
             <div class="d-flex justify-content-center">
                 {{ $employees->links( "pagination::bootstrap-4") }}
             </div>

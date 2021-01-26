@@ -20,13 +20,13 @@ class Company extends Model
         parent::boot();
 
         static::deleting(function($company) { // before delete() method call this
-    
+            // delete company logo 
             try {
                 File::delete(public_path('images/company'. '/' . $company->logo ));
             } catch (\Throwable $th) {
                 //throw $th;
             }
-            
+            // delete all company's employee
             $company->employee->each->delete();
             
         });

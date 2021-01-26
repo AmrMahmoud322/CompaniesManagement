@@ -20,6 +20,7 @@ class Employee extends Model
         parent::boot();
 
         static::deleting(function($employee) { // before delete() method call this
+            // delete employee logo 
             try {
                 File::delete(public_path('images/employee'. '/' . $employee->logo ));
             } catch (\Throwable $th) {
