@@ -10,6 +10,7 @@ to Run Shopping on localhost: <br><br>
 	7- Run commands:<br>
 	 <li>	 $ composer install</li>
 	 <li>	 $ npm install</li>
+     <li>	 $ npm fund</li>
 	 <li>	 $ npm install --no-bin-links</li>
 	 <li>	 $ php artisan migrate</li>
 	 <li>	 $ php artisan db:seed</li>
