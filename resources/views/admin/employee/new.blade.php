@@ -61,7 +61,14 @@
                         
                         <div class="col">
                             <label for="formGroupExampleInput">Company</label>
-                            <input type="text" name="company" class="form-control" placeholder="..." value="{{ old('company') }}">
+                            {{-- <input type="text" name="company" class="form-control" placeholder="..." value="{{ old('company') }}"> --}}
+                            <select class="form-control" aria-label="Default select example" name="company">
+                                <option selected>Open this select menu</option>
+                                @foreach ($companies as $company)
+                                    <option value="{{$company->id}}">{{$company->name}}</option>                                    
+                                @endforeach
+                            
+                            </select>
                         </div>
                         <div class="col">
                             <label for="formGroupExampleInput">Logo</label>

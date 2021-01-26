@@ -11,15 +11,13 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::paginate(10);
-        // return $companies;
+        $companies = Company::paginate(10); // get companies with pagination 10 row
         return view('admin.company.index',['companies' => $companies]);
     }
 
     public function show($id)
     {
         $company = Company::find($id);
-        // return $company;        
         return view('admin.company.edit',['company' => $company]);
     }
 
@@ -30,7 +28,6 @@ class CompanyController extends Controller
 
     public function add(Request $request)
     {
-        // return $request;
         $request->validate([
             'name' => 'required|min:2|max:255',
             'email' => 'nullable|max:255',
@@ -39,16 +36,16 @@ class CompanyController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=100,min_height=100|max:2048',
         ]);
 
-        $imageName = time().'.'. $request->logo->extension();  
+        $imageName = time().'.'. $request->logo->extension();  // create name for image (time + imageextension)
      
-        $request->logo->move(public_path('images/company'), $imageName);
+        $request->logo->move(public_path('images/company'), $imageName); //store image in public folder 'images/company'
         
         $company = new Company();
         
         $company->name = $request->name;
         $company->email = $request->email;
         $company->website = $request->website;
-        $company->logo = $imageName;
+        $company->logo = $imageName; // save image name
         $company->save();
 
         return redirect()->route('admin.company.index')->with('success','successfully added company.');
@@ -66,17 +63,20 @@ class CompanyController extends Controller
         ]);
         // return var_dump($request->phone_no);
         $company = Company::find($request->id);
-
+        
+        // check if admin change logo
         if ($request->hasFile('logo')) {
+            // validate image before store it
             $request->validate([
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=100,min_height=100',
             ]);
+            // delete old logo from public folder
             try {
                 File::delete(public_path('images/company'. '/' . $company->logo ));
             } catch (\Throwable $th) {
                 //throw $th;
             }
-
+            // update company logo name and store it 
             $imageName = time().'.'. $request->logo->extension();  
      
             $request->logo->move(public_path('images/company'), $imageName);

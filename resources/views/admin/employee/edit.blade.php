@@ -66,7 +66,22 @@
                         
                         <div class="col">
                             <label for="formGroupExampleInput">Company</label>
-                            <input type="text" name="company" class="form-control" placeholder="..." value="{{ $employee->company_id }}">
+                            {{-- <input type="text" name="company" class="form-control" placeholder="..." value="{{ $employee->company_id }}"> --}}
+                            <select class="form-control" aria-label="Default select example" name="company">
+                                <option selected>Open this select menu</option>
+                                @foreach ($companies as $company)
+                                    @php
+                                        if ($company->id == $employee->company_id){
+                                            $selected = "selected";
+                                        }else {
+                                            $selected = "";
+                                        }
+                                        
+                                    @endphp
+                                    <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>                                    
+                                @endforeach
+                            
+                            </select>
                         </div>
                         <div class="col">
                             <label for="formGroupExampleInput">Logo</label>
